@@ -1,0 +1,25 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions:dialogflowFirebaseFulfillment",
+    "logs": "firebase functions:log",
+    "start": "nodemon --exec firebase serve --only functions:dialogflowFirebaseFulfillment --project travelplanner-neji",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment --project travelplanner-neji"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "actions-on-google": "2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "0.5.0",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.2.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
