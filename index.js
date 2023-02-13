@@ -371,9 +371,9 @@ app.intent('MyTravelPlanner.RentCar.SelectRentCar', conv => {
     /*console.log('========= Input Contexts ============')
     console.log(conv.contexts.input);
     console.log(conv.contexts.input.rentcarjourneycntxt?.parameters);
-    console.log('========= Parameter Contexts ============')*/
     console.log('========= Parameter Contexts ============')
-    console.log(conv.parameters)
+    console.log('========= Parameter Contexts ============')
+    console.log(conv.parameters)*/
     const rentCarParams = conv.parameters;
     if(isEmpty(rentCarParams.rentCarName)) {
         conv.add(`Please select from below available cars.`);
@@ -381,10 +381,7 @@ app.intent('MyTravelPlanner.RentCar.SelectRentCar', conv => {
     } else {
         const rentCarJourneyConParams = conv.contexts.input.rentcarjourneycntxt?.parameters;
         let rentedCarDate = new Date(rentCarJourneyConParams.rentCarDate)
-        const day = ('0' + (rentedCarDate.getDate())).slice(-2)
-        const month = ('0' + (rentedCarDate.getMonth())).slice(-2)
-        const year = rentedCarDate.getFullYear()
-        rentedCarDate = `${day}/${month}/${year}`;
+        rentedCarDate = formatDate(rentedCarDate);
         const rentCarLocation = rentCarJourneyConParams.rentCarLocation.city || rentCarJourneyConParams.rentCarLocation['admin-area']
         conv.close(`${rentCarJourneyConParams.rentCarName} Booked for ${rentCarLocation} for ${rentedCarDate}`);
     }
